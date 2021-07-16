@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name                = "KTVHTTPCache"
+  s.name                = "KTVHTTPCacheV2"
   s.version             = "2.0.2"
   s.summary             = "A powerful media cache framework."
   s.homepage            = "https://github.com/hehonghui/KTVHTTPCache"
