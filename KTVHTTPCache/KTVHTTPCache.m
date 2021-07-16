@@ -197,6 +197,11 @@
     return [[KTVHCLog log] errorForURL:URL];
 }
 
++ (void)keepAliveInBackground:(BOOL)aliveInBackground
+{
+    [[KTVHCHTTPServer server] setKeepAliveInBackground:aliveInBackground];
+}
+
 @end
 
 #pragma mark - Deprecated

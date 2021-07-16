@@ -16,6 +16,7 @@
 + (instancetype)server;
 
 @property (nonatomic, readonly, getter=isRunning) BOOL running;
+@property (nonatomic) BOOL keepAliveInBackground;
 
 - (BOOL)start:(NSError **)error;
 - (void)stop;

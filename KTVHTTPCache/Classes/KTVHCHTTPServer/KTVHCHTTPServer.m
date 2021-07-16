@@ -119,6 +119,11 @@
 
 - (void)applicationDidEnterBackground
 {
+    // don't stop proxy server when enter background
+    if (self.keepAliveInBackground) {
+        KTVHCLogHTTPServer(@"%p, enter background do nothing", self);
+        return;
+    }
     if (self.server.numberOfHTTPConnections > 0) {
         KTVHCLogHTTPServer(@"%p, enter background", self);
         [self beginBackgroundTask];
@@ -131,6 +136,10 @@
 - (void)applicationWillEnterForeground
 {
     KTVHCLogHTTPServer(@"%p, enter foreground", self);
+    if (self.keepAliveInBackground) {
+        KTVHCLogHTTPServer(@"%p, enter foreground do nothing", self);
+        return;
+    }
     if (self.backgroundTask == UIBackgroundTaskInvalid && self.wantsRunning) {
         KTVHCLogHTTPServer(@"%p, restart server", self);
         [self startInternal:nil];

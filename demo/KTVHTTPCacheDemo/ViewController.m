@@ -41,6 +41,9 @@
     } else {
         NSLog(@"Proxy Start Success");
     }
+    
+    // keep proxy server alive when app goes into background
+    [KTVHTTPCache keepAliveInBackground:YES];
     [KTVHTTPCache encodeSetURLConverter:^NSURL *(NSURL *URL) {
         NSLog(@"URL Filter reviced URL : %@", URL);
         return URL;

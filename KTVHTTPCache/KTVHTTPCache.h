@@ -326,6 +326,14 @@ FOUNDATION_EXPORT const unsigned char KTVHTTPCacheVersionString[];
  */
 + (void)logCleanErrorForURL:(NSURL *)URL;
 
+
+/**
+ *  Keep proxy server alive when app in background
+ *
+ *  @param aliveInBackground : Keep proxy server alive when app in background if the aliveInBackground is true.
+ */
++ (void)keepAliveInBackground:(BOOL)aliveInBackground;
+
 @end
 
 /**
