@@ -153,6 +153,10 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground &&
             self.server.numberOfHTTPConnections == 0) {
+            if ([self keepAliveInBackground]) {
+                KTVHCLogHTTPServer(@"%p, server idle, but keep server alive!", self);
+                return;
+            }
             KTVHCLogHTTPServer(@"%p, server idle", self);
             [self endBackgroundTask];
             [self stopInternal];
